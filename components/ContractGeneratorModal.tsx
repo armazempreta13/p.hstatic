@@ -314,7 +314,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 print:fixed print:inset-0 print:p-0 print:bg-white">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <motion.div 
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
         onClick={onClose} 
@@ -329,10 +329,11 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
       )}
 
       <motion.div 
+        id="contract-modal"
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
-        className="relative w-full max-w-5xl bg-white dark:bg-[#1A1D24] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] print:w-screen print:h-screen print:rounded-none print:shadow-none print:max-w-none print:max-h-none print:m-0 print:p-0"
+        className="relative w-full max-w-5xl bg-white dark:bg-[#1A1D24] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] print:max-w-none print:w-auto print:h-auto print:max-h-none print:rounded-none print:shadow-none print:m-0 print:p-0"
       >
         
         <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-[#151921] print:hidden">
@@ -371,7 +372,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
                 </div>
             )}
 
-            <div id="contract-content" className="bg-white text-black mx-auto w-[210mm] print:w-screen print:mx-0 print:p-[14mm] p-[20mm] shadow-2xl print:shadow-none font-sans text-[10pt] print:text-[9pt] leading-snug print:leading-tight">
+            <div id="contract-content" className="bg-white text-black mx-auto w-[210mm] print:w-full print:mx-0 print:p-[14mm] p-[20mm] shadow-2xl print:shadow-none font-sans text-[10pt] print:text-[9pt] leading-snug print:leading-tight">
                 <div style={{ textAlign: 'center', marginBottom: '10pt', borderBottom: '2px solid #000', paddingBottom: '5pt' }}>
                     <h1 style={{ fontSize: '11pt', fontWeight: 'bold', margin: '0 0 3pt 0', color: '#000' }}>CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE</h1>
                     <h1 style={{ fontSize: '11pt', fontWeight: 'bold', margin: '3pt 0 0 0', borderBottom: 'none', color: '#000' }}>DESENVOLVIMENTO DE SOFTWARE</h1>
@@ -581,32 +582,34 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
 
         <style>{`
             @media print {
-                * {
-                    -webkit-print-color-adjust: exact !important;
-                    print-color-adjust: exact !important;
-                }
                 @page {
                     size: A4;
                     margin: 0;
                 }
-                html, body {
-                    width: 100% !important;
-                    height: 100% !important;
-                    background: white !important;
+                
+                * {
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                    color-adjust: exact !important;
                 }
-                body > * {
-                    display: none !important;
-                }
-                div[class*="max-w-5xl"] {
-                    display: block !important;
-                    width: 100% !important;
-                    position: static !important;
-                }
-                #contract-content {
-                    width: 100% !important;
+                
+                body {
                     margin: 0 !important;
-                    padding: 14mm !important;
+                    padding: 0 !important;
+                }
+                
+                #contract-modal {
+                    position: static !important;
+                    width: 100% !important;
+                    height: auto !important;
+                    max-width: none !important;
+                    max-height: none !important;
+                    overflow: visible !important;
+                }
+                
+                #contract-content {
                     box-shadow: none !important;
+                    margin: 0 !important;
                 }
             }
         `}</style>
