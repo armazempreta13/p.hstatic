@@ -399,6 +399,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
             <div 
                 ref={printRef}
                 className="bg-white text-black mx-auto max-w-[210mm] min-h-[297mm] p-[20mm] shadow-2xl print:shadow-none print:m-0 print:w-full font-serif text-[11pt] leading-relaxed text-justify relative"
+                style={{ backgroundColor: '#FFFFFF', color: '#000000' }}
             >
                 {/* Contract Content */}
                 <h1 className="text-center font-bold text-lg mb-8 uppercase border-b-2 border-black pb-4">Contrato de Prestação de Serviços de Desenvolvimento de Software</h1>
@@ -628,15 +629,60 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         {/* Print Styles Injection */}
         <style>{`
             @media print {
-                body > *:not(.print-area) {
-                    display: none;
+                * {
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                    color-adjust: exact !important;
+                    background-color: transparent !important;
                 }
-                /* Hide scrollbars */
-                ::-webkit-scrollbar { display: none; }
-                /* Ensure background colors print */
-                * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-                @page { margin: 0; size: auto; }
-                body { margin: 0; padding: 0; background: white; }
+                html, body {
+                    width: 100% !important;
+                    height: 100% !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    background: white !important;
+                }
+                .fixed, .absolute {
+                    position: relative !important;
+                }
+                [class*="print:hidden"] {
+                    display: none !important;
+                }
+                div[class*="overflow-y-auto"] {
+                    overflow: visible !important;
+                    max-height: none !important;
+                }
+                div[class*="max-h-"] {
+                    max-height: none !important;
+                }
+                .custom-scrollbar {
+                    overflow: visible !important;
+                }
+                h1, h2, h3, h4, h5, h6, p, span, div {
+                    color: black !important;
+                    background: transparent !important;
+                }
+                .bg-gray-100, .bg-gray-50 {
+                    background: transparent !important;
+                    border: 1px solid #999 !important;
+                }
+                .shadow-2xl, .shadow-lg {
+                    box-shadow: none !important;
+                }
+                .border-black {
+                    border-color: black !important;
+                }
+                .border-gray-200, .border-gray-700 {
+                    border-color: #999 !important;
+                }
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+                @page {
+                    margin: 0 !important;
+                    size: A4;
+                }
             }
         `}</style>
       </motion.div>
