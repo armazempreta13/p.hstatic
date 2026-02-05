@@ -332,7 +332,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 print:z-[9999] print:fixed print:inset-0 print:p-0 print:m-0">
       {/* Backdrop */}
       <motion.div 
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -353,7 +353,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
-        className="relative w-full max-w-5xl bg-white dark:bg-[#1A1D24] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] print:max-h-none print:max-w-none print:w-full print:h-full print:rounded-none print:shadow-none print:bg-white print:fixed print:inset-0 print:z-[200]"
+        className="relative w-full max-w-5xl bg-white dark:bg-[#1A1D24] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] print:max-h-full print:max-w-full print:w-screen print:h-screen print:rounded-none print:shadow-none print:bg-white print:fixed print:inset-0 print:z-[9999] print:flex print:flex-col"
       >
         
         {/* Header */}
@@ -380,7 +380,8 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         <div 
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            className="flex-1 overflow-y-auto bg-gray-100 dark:bg-black/50 p-8 print:p-0 print:overflow-visible print:bg-white custom-scrollbar relative scroll-smooth"
+            className="flex-1 overflow-y-auto bg-gray-100 dark:bg-black/50 p-8 print:p-0 print:overflow-visible print:bg-white print:flex-1 print:m-0 custom-scrollbar relative scroll-smooth"
+            style={{ background: 'rgb(243, 244, 246)' }}
         >
             
             {/* Scroll Alert for Client */}
@@ -398,7 +399,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
             {/* A4 Paper Simulation */}
             <div 
                 ref={printRef}
-                className="bg-white text-black mx-auto max-w-[210mm] min-h-[297mm] p-[20mm] shadow-2xl print:shadow-none print:m-0 print:w-full font-serif text-[11pt] leading-relaxed text-justify relative"
+                className="bg-white text-black mx-auto max-w-[210mm] min-h-[297mm] p-[20mm] shadow-2xl print:shadow-none print:m-0 print:w-full print:max-w-none print:min-h-full print:p-[10mm] font-serif text-[11pt] leading-relaxed text-justify relative"
                 style={{ backgroundColor: '#FFFFFF', color: '#000000' }}
             >
                 {/* Contract Content */}
@@ -629,24 +630,40 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         {/* Print Styles Injection */}
         <style>{`
             @media print {
-                * {
-                    -webkit-print-color-adjust: exact !important;
-                    print-color-adjust: exact !important;
-                    color-adjust: exact !important;
-                    background-color: transparent !important;
-                }
-                html, body {
+                body, html {
                     width: 100% !important;
                     height: 100% !important;
                     margin: 0 !important;
                     padding: 0 !important;
                     background: white !important;
+                    overflow: visible !important;
                 }
-                .fixed, .absolute {
+                body * {
+                    display: none !important;
+                }
+                body div[class*="z-\\[9999\\]"] {
+                    display: flex !important;
+                }
+                body div[class*="z-\\[9999\\]"] * {
+                    display: block !important;
+                    display: flex !important;
+                    display: grid !important;
+                    display: inline !important;
+                    display: inline-block !important;
+                }
+                * {
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                    color-adjust: exact !important;
+                }
+                .print\\:hidden {
+                    display: none !important;
+                }
+                .fixed {
                     position: relative !important;
                 }
-                [class*="print:hidden"] {
-                    display: none !important;
+                .absolute {
+                    position: relative !important;
                 }
                 div[class*="overflow-y-auto"] {
                     overflow: visible !important;
@@ -655,25 +672,19 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
                 div[class*="max-h-"] {
                     max-height: none !important;
                 }
-                .custom-scrollbar {
-                    overflow: visible !important;
-                }
-                h1, h2, h3, h4, h5, h6, p, span, div {
+                h1, h2, h3, h4, h5, h6, p, span, div, li, ul, ol, a {
                     color: black !important;
                     background: transparent !important;
                 }
-                .bg-gray-100, .bg-gray-50 {
+                .bg-gray-100, .bg-gray-50, .bg-white {
                     background: transparent !important;
-                    border: 1px solid #999 !important;
                 }
-                .shadow-2xl, .shadow-lg {
+                .shadow-2xl, .shadow-lg, [class*="shadow"] {
                     box-shadow: none !important;
                 }
-                .border-black {
-                    border-color: black !important;
-                }
-                .border-gray-200, .border-gray-700 {
-                    border-color: #999 !important;
+                .border-black, .border-gray-200, .border-gray-700 {
+                    border-color: #000 !important;
+                    border-width: 1px !important;
                 }
                 img {
                     max-width: 100%;
