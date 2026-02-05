@@ -628,75 +628,129 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         <style>{`
             @media print {
                 @page {
-                    margin: 15mm;
+                    margin: 0;
                     size: A4;
                 }
                 
+                html, body {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    background: white;
+                }
+                
+                /* Hide everything by default */
                 * {
                     -webkit-print-color-adjust: exact !important;
                     print-color-adjust: exact !important;
                     color-adjust: exact !important;
+                    margin: 0;
+                    padding: 0;
                 }
                 
-                body * {
-                    visibility: hidden;
-                }
-                
+                /* Hide header and footer buttons */
                 .print\\:hidden,
                 [class*="print:hidden"] {
                     display: none !important;
-                    visibility: hidden !important;
                 }
                 
-                /* Mostra apenas o contrato */
+                /* Hide the backdrop */
+                [class*="bg-black/70"] {
+                    display: none !important;
+                }
+                
+                /* Modal container - make it full page */
                 div[class*="max-w-5xl"] {
-                    visibility: visible;
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    max-width: none !important;
+                    position: static !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                    max-width: 100% !important;
+                    max-height: 100% !important;
                     background: white !important;
                     margin: 0 !important;
                     padding: 0 !important;
                     box-shadow: none !important;
                     border-radius: 0 !important;
+                    display: block !important;
+                    border: none !important;
                 }
                 
-                div[class*="max-w-5xl"] * {
-                    visibility: visible;
-                }
-                
-                /* Container do contrato */
-                div[class*="max-w-\\[210mm\\]"] {
-                    max-width: none !important;
-                    margin: 0 !important;
+                /* Contract scroll container */
+                div[class*="overflow-y-auto"] {
+                    position: static !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    background: white !important;
+                    overflow: visible !important;
                     padding: 0 !important;
-                    box-shadow: none !important;
-                    min-height: 0 !important;
+                    margin: 0 !important;
                 }
                 
-                /* Remove backgrounds coloridos */
+                /* A4 Paper container */
+                div[class*="max-w-\\[210mm\\]"] {
+                    position: static !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    margin: 0 !important;
+                    padding: 15mm !important;
+                    min-height: 100% !important;
+                    box-shadow: none !important;
+                    border: none !important;
+                    background: white !important;
+                    display: block !important;
+                }
+                
+                /* All text elements */
+                h1, h2, h3, h4, h5, h6 {
+                    color: #000 !important;
+                    background: transparent !important;
+                    break-inside: avoid;
+                }
+                
+                p, span, div, li {
+                    color: #000 !important;
+                    background: transparent !important;
+                }
+                
+                strong, b {
+                    color: #000 !important;
+                }
+                
+                /* Remove gray backgrounds */
                 .bg-gray-100, 
                 .bg-gray-50,
+                .bg-slate-800,
                 [class*="bg-gray"] {
                     background: transparent !important;
                 }
                 
-                /* Mantém bordas pretas */
-                .border-black {
+                /* Keep borders */
+                .border-black,
+                .border-b {
                     border-color: #000 !important;
+                    border-width: 1px !important;
                 }
                 
-                /* Texto sempre preto */
-                h1, h2, h3, h4, h5, h6, p, span, div, li, strong {
-                    color: #000 !important;
+                /* Lists */
+                ul, ol {
+                    margin-left: 1.5rem !important;
                 }
                 
-                /* Assinaturas visíveis */
-                img[alt*="Assinatura"] {
-                    visibility: visible !important;
+                li {
+                    display: list-item !important;
+                }
+                
+                /* Images - signatures */
+                img {
+                    max-width: 100%;
+                    height: auto;
                     display: block !important;
+                }
+                
+                /* Prevent page breaks in important sections */
+                .space-y-4 > * {
+                    break-inside: avoid;
                 }
             }
         `}</style>
