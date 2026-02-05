@@ -371,128 +371,128 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
                 </div>
             )}
 
-            <div id="contract-content" className="bg-white text-black mx-auto w-[210mm] print:w-screen print:mx-0 print:p-[20mm] p-[20mm] shadow-2xl print:shadow-none font-sans text-[11pt] leading-normal">
-                <div style={{ textAlign: 'center', marginBottom: '20pt', borderBottom: '2px solid #000', paddingBottom: '10pt' }}>
-                    <h1 style={{ fontSize: '14pt', fontWeight: 'bold', margin: '0 0 5pt 0', color: '#000' }}>CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE</h1>
-                    <h1 style={{ fontSize: '14pt', fontWeight: 'bold', margin: '5pt 0 0 0', borderBottom: 'none', color: '#000' }}>DESENVOLVIMENTO DE SOFTWARE</h1>
+            <div id="contract-content" className="bg-white text-black mx-auto w-[210mm] print:w-screen print:mx-0 print:p-[14mm] p-[20mm] shadow-2xl print:shadow-none font-sans text-[10pt] print:text-[9pt] leading-snug print:leading-tight">
+                <div style={{ textAlign: 'center', marginBottom: '10pt', borderBottom: '2px solid #000', paddingBottom: '5pt' }}>
+                    <h1 style={{ fontSize: '11pt', fontWeight: 'bold', margin: '0 0 3pt 0', color: '#000' }}>CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE</h1>
+                    <h1 style={{ fontSize: '11pt', fontWeight: 'bold', margin: '3pt 0 0 0', borderBottom: 'none', color: '#000' }}>DESENVOLVIMENTO DE SOFTWARE</h1>
                 </div>
 
-                <div style={{ marginTop: '20pt', marginBottom: '15pt' }}>
-                    <p style={{ marginBottom: '10pt', color: '#000', textAlign: 'justify' }}>
+                <div style={{ marginTop: '8pt', marginBottom: '6pt' }}>
+                    <p style={{ marginBottom: '5pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                         <strong>CONTRATADA:</strong> <strong>JOÃO PHILIPPE DE OLIVEIRA BOECHAT</strong>, pessoa física inscrita no CPF sob o nº <strong>053.795.071-07</strong> e portador do RG nº 3.755.968, doravante denominado simplesmente <strong>CONTRATADA</strong>.
                     </p>
 
-                    <p style={{ marginBottom: '10pt', color: '#000', textAlign: 'justify' }}>
+                    <p style={{ marginBottom: '5pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                         <strong>CONTRATANTE:</strong> <strong>{project.clientName.toUpperCase()}</strong>, portador(a) do e-mail <strong>{project.email}</strong>, e inscrito(a) no CPF/CNPJ sob o nº <strong>{project.cpf || "______________________"}</strong>, doravante denominado(a) simplesmente <strong>CONTRATANTE</strong>.
                     </p>
 
-                    <p style={{ color: '#000', textAlign: 'justify' }}>
+                    <p style={{ color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                         As partes têm, entre si, justo e acertado o presente Contrato, regido pelas cláusulas abaixo:
                     </p>
                 </div>
 
-                <h2 style={{ fontSize: '11pt', fontWeight: 'bold', marginTop: '15pt', marginBottom: '8pt', borderBottom: '1px solid #333', paddingBottom: '3pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 1ª - Do Objeto e Escopo</h2>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <h2 style={{ fontSize: '9.5pt', fontWeight: 'bold', marginTop: '8pt', marginBottom: '4pt', borderBottom: '1px solid #333', paddingBottom: '2pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 1ª - Do Objeto e Escopo</h2>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     <strong>1.1.</strong> O objeto é o desenvolvimento da Interface Visual (Frontend) de um Website/Aplicação Web denominado <strong>"{project.projectName}"</strong>. O serviço contempla exclusivamente:
                 </p>
-                <ul style={{ marginLeft: '30pt', marginBottom: '10pt' }}>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}>Codificação da Interface Gráfica (Layout) utilizando tecnologias web modernas (HTML, CSS, Javascript/React/Next.js).</li>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}>Estruturação de páginas e menus de navegação conforme briefing aprovado.</li>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}>Implementação de Responsividade (adaptação visual para celulares/tablets).</li>
+                <ul style={{ marginLeft: '20pt', marginBottom: '5pt', paddingLeft: '0' }}>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}>Codificação da Interface Gráfica (Layout) utilizando tecnologias web modernas (HTML, CSS, Javascript/React/Next.js).</li>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}>Estruturação de páginas e menus de navegação conforme briefing aprovado.</li>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}>Implementação de Responsividade (adaptação visual para celulares/tablets).</li>
                 </ul>
 
-                <p style={{ marginBottom: '8pt', color: '#000' }}>
+                <p style={{ marginBottom: '4pt', color: '#000', lineHeight: '1.25' }}>
                     <strong>1.2. EXCLUSÕES EXPRESSAS</strong> (O que NÃO será feito):
                 </p>
-                <ul style={{ marginLeft: '30pt', marginBottom: '10pt' }}>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}><strong>Integrações Funcionais:</strong> Configuração de gateways de pagamento, APIs de frete, emissão de nota fiscal ou lógica de vendas.</li>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}><strong>Backend/Dados:</strong> Criação de banco de dados, painéis administrativos (dashboard), sistemas de login ou servidores.</li>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}>Inserção de conteúdo (textos/fotos) ou tratamento de imagens.</li>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}>Qualquer funcionalidade não descrita explicitamente na proposta inicial.</li>
+                <ul style={{ marginLeft: '20pt', marginBottom: '5pt', paddingLeft: '0' }}>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}><strong>Integrações Funcionais:</strong> Configuração de gateways de pagamento, APIs de frete, emissão de nota fiscal ou lógica de vendas.</li>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}><strong>Backend/Dados:</strong> Criação de banco de dados, painéis administrativos (dashboard), sistemas de login ou servidores.</li>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}>Inserção de conteúdo (textos/fotos) ou tratamento de imagens.</li>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}>Qualquer funcionalidade não descrita explicitamente na proposta inicial.</li>
                 </ul>
 
-                <h2 style={{ fontSize: '11pt', fontWeight: 'bold', marginTop: '15pt', marginBottom: '8pt', borderBottom: '1px solid #333', paddingBottom: '3pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 2ª - Dos Prazos, Aprovações e Validade</h2>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <h2 style={{ fontSize: '9.5pt', fontWeight: 'bold', marginTop: '8pt', marginBottom: '4pt', borderBottom: '1px solid #333', paddingBottom: '2pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 2ª - Dos Prazos, Aprovações e Validade</h2>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     <strong>2.1. Previsão de entrega:</strong> <strong>{project.dueDate}</strong>, sujeita ao envio pontual de materiais pelo CONTRATANTE. Atrasos no envio de materiais pausam automaticamente o cronograma de entrega.
                 </p>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     <strong>2.2. Limite de Alterações:</strong> O CONTRATANTE terá direito a 3 (três) rodadas de revisão no layout. Ajustes que fujam ao escopo inicial ou excedam as rodadas serão cobrados como horas técnicas adicionais (R$ 150,00/hora).
                 </p>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     <strong>2.3. Validade da Proposta:</strong> Os valores e prazos deste contrato são válidos para início imediato. Caso o projeto seja paralisado pelo CONTRATANTE por mais de 20 dias, poderá haver reajuste de valores na retomada.
                 </p>
 
-                <h2 style={{ fontSize: '11pt', fontWeight: 'bold', marginTop: '15pt', marginBottom: '8pt', borderBottom: '1px solid #333', paddingBottom: '3pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 3ª - Dos Valores e Blindagem de Pagamento</h2>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <h2 style={{ fontSize: '9.5pt', fontWeight: 'bold', marginTop: '8pt', marginBottom: '4pt', borderBottom: '1px solid #333', paddingBottom: '2pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 3ª - Dos Valores e Blindagem de Pagamento</h2>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     <strong>Valor total: {formattedValue}</strong>
                     <br/>a) 50% de entrada (Sinal).
                     <br/>b) 50% na entrega para homologação.
                 </p>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     <strong>3.1. Multas:</strong> Atrasos sujeitam a CONTRATANTE a multa de 2% + juros de 1% ao mês.
                 </p>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify', border: '1px solid #000', padding: '8pt' }}>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', border: '1px solid #000', padding: '4pt', lineHeight: '1.25' }}>
                     <strong>3.2. Suspensão de Serviços (Lock-out):</strong> Em caso de atraso superior a 3 (três) dias no pagamento de qualquer parcela, a CONTRATADA reserva-se o direito de <strong>suspender imediatamente a execução dos serviços ou o acesso aos ambientes de teste</strong> até a regularização, sem prejuízo aos prazos de entrega.
                 </p>
 
-                <h2 style={{ fontSize: '11pt', fontWeight: 'bold', marginTop: '15pt', marginBottom: '8pt', borderBottom: '1px solid #333', paddingBottom: '3pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 4ª - Da Limitação de Responsabilidade</h2>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <h2 style={{ fontSize: '9.5pt', fontWeight: 'bold', marginTop: '8pt', marginBottom: '4pt', borderBottom: '1px solid #333', paddingBottom: '2pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 4ª - Da Limitação de Responsabilidade</h2>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     <strong>4.1.</strong> A CONTRATADA desenvolve a interface visual (Frontend). Não é de responsabilidade da CONTRATADA:
                 </p>
-                <ul style={{ marginLeft: '30pt', marginBottom: '10pt' }}>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}>Falhas, lentidão ou queda de servidores de hospedagem contratados pelo CONTRATANTE.</li>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}>Erros em APIs de terceiros (Gateways de pagamento, Correios, etc.).</li>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}>Prejuízos financeiros decorrentes de "bugs" ou indisponibilidade do site.</li>
-                    <li style={{ marginBottom: '5pt', fontSize: '10pt', color: '#000' }}>Segurança da informação (vazamento de dados) em servidores gerenciados por terceiros.</li>
+                <ul style={{ marginLeft: '20pt', marginBottom: '5pt', paddingLeft: '0' }}>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}>Falhas, lentidão ou queda de servidores de hospedagem contratados pelo CONTRATANTE.</li>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}>Erros em APIs de terceiros (Gateways de pagamento, Correios, etc.).</li>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}>Prejuízos financeiros decorrentes de "bugs" ou indisponibilidade do site.</li>
+                    <li style={{ marginBottom: '2pt', fontSize: '8.5pt', color: '#000', lineHeight: '1.2' }}>Segurança da informação (vazamento de dados) em servidores gerenciados por terceiros.</li>
                 </ul>
 
-                <h2 style={{ fontSize: '11pt', fontWeight: 'bold', marginTop: '15pt', marginBottom: '8pt', borderBottom: '1px solid #333', paddingBottom: '3pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 5ª - Da Rescisão e Multa Compensatória</h2>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <h2 style={{ fontSize: '9.5pt', fontWeight: 'bold', marginTop: '8pt', marginBottom: '4pt', borderBottom: '1px solid #333', paddingBottom: '2pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 5ª - Da Rescisão e Multa Compensatória</h2>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     <strong>5.1. Desistência:</strong> Em caso de rescisão imotivada pelo CONTRATANTE:
                     <br/>a) Fase Inicial: O valor do sinal (50%) será retido integralmente para custear reserva de agenda e horas trabalhadas.
                     <br/>b) Fase Final (após entrega p/ homologação): Será devido o valor integral (100%) do contrato.
                 </p>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     <strong>5.2. Quebra de Contrato:</strong> A infração de qualquer cláusula ensejará multa não-compensatória de 20% (vinte por cento) sobre o valor total do contrato, além da cobrança dos valores em aberto.
                 </p>
 
-                <h2 style={{ fontSize: '11pt', fontWeight: 'bold', marginTop: '15pt', marginBottom: '8pt', borderBottom: '1px solid #333', paddingBottom: '3pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 6ª - Da Propriedade Intelectual</h2>
-                <p style={{ marginBottom: '8pt', color: '#000', textAlign: 'justify' }}>
+                <h2 style={{ fontSize: '9.5pt', fontWeight: 'bold', marginTop: '8pt', marginBottom: '4pt', borderBottom: '1px solid #333', paddingBottom: '2pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 6ª - Da Propriedade Intelectual</h2>
+                <p style={{ marginBottom: '4pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     O código-fonte é propriedade da CONTRATADA até a quitação total dos valores. O não pagamento da parcela final impede o CONTRATANTE de utilizar, publicar ou modificar o código, sob pena de violação de direitos autorais (Lei 9.610/98).
                 </p>
 
-                <h2 style={{ fontSize: '11pt', fontWeight: 'bold', marginTop: '15pt', marginBottom: '8pt', borderBottom: '1px solid #333', paddingBottom: '3pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 7ª - Do Foro</h2>
-                <p style={{ marginBottom: '30pt', color: '#000', textAlign: 'justify' }}>
+                <h2 style={{ fontSize: '9.5pt', fontWeight: 'bold', marginTop: '8pt', marginBottom: '4pt', borderBottom: '1px solid #333', paddingBottom: '2pt', textTransform: 'uppercase', color: '#000' }}>Cláusula 7ª - Do Foro</h2>
+                <p style={{ marginBottom: '12pt', color: '#000', textAlign: 'justify', lineHeight: '1.25' }}>
                     Fica eleito o foro da comarca de <strong>Ceilândia - DF</strong>.
                 </p>
 
-                <p style={{ textAlign: 'center', marginTop: '20pt', marginBottom: '30pt', fontStyle: 'italic', fontSize: '10pt', color: '#666' }}>
+                <p style={{ textAlign: 'center', marginTop: '10pt', marginBottom: '15pt', fontStyle: 'italic', fontSize: '8.5pt', color: '#666' }}>
                     Brasília (Ceilândia), {currentDate}.
                 </p>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '40pt', marginTop: '60pt' }}>
-                    <div style={{ flex: 1, borderTop: '1px solid #000', textAlign: 'center', paddingTop: '10pt', position: 'relative', minHeight: '100px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '25pt', marginTop: '25pt' }}>
+                    <div style={{ flex: 1, borderTop: '1px solid #000', textAlign: 'center', paddingTop: '6pt', position: 'relative', minHeight: '70px' }}>
                         {adminSig && (
                             <img 
                                 src={adminSig} 
                                 alt="Assinatura Contratada" 
-                                style={{ position: 'absolute', bottom: '30pt', left: '50%', transform: 'translateX(-50%)', height: '60px', maxWidth: '90%' }}
+                                style={{ position: 'absolute', bottom: '20pt', left: '50%', transform: 'translateX(-50%)', height: '45px', maxWidth: '90%' }}
                             />
                         )}
-                        <p style={{ fontWeight: 'bold', fontSize: '11pt', marginBottom: '3pt', color: '#000' }}>JOÃO PHILIPPE DE OLIVEIRA BOECHAT</p>
-                        <p style={{ fontSize: '9pt', textTransform: 'uppercase', letterSpacing: '1px', color: '#000' }}>CONTRATADA</p>
+                        <p style={{ fontWeight: 'bold', fontSize: '9pt', marginBottom: '2pt', color: '#000' }}>JOÃO PHILIPPE DE OLIVEIRA BOECHAT</p>
+                        <p style={{ fontSize: '7.5pt', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#000' }}>CONTRATADA</p>
                     </div>
 
-                    <div style={{ flex: 1, borderTop: '1px solid #000', textAlign: 'center', paddingTop: '10pt', position: 'relative', minHeight: '100px' }}>
+                    <div style={{ flex: 1, borderTop: '1px solid #000', textAlign: 'center', paddingTop: '6pt', position: 'relative', minHeight: '70px' }}>
                         {clientSig && (
                             <img 
                                 src={clientSig} 
                                 alt="Assinatura Cliente" 
-                                style={{ position: 'absolute', bottom: '30pt', left: '50%', transform: 'translateX(-50%)', height: '60px', maxWidth: '90%' }}
+                                style={{ position: 'absolute', bottom: '20pt', left: '50%', transform: 'translateX(-50%)', height: '45px', maxWidth: '90%' }}
                             />
                         )}
-                        <p style={{ fontWeight: 'bold', fontSize: '11pt', marginBottom: '3pt', color: '#000' }}>{project.clientName.toUpperCase()}</p>
-                        <p style={{ fontSize: '9pt', textTransform: 'uppercase', letterSpacing: '1px', color: '#000' }}>CONTRATANTE</p>
+                        <p style={{ fontWeight: 'bold', fontSize: '9pt', marginBottom: '2pt', color: '#000' }}>{project.clientName.toUpperCase()}</p>
+                        <p style={{ fontSize: '7.5pt', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#000' }}>CONTRATANTE</p>
                     </div>
                 </div>
             </div>
@@ -582,19 +582,17 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         <style>{`
             @media print {
                 * {
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    border-collapse: collapse !important;
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                }
+                @page {
+                    size: A4;
+                    margin: 0;
                 }
                 html, body {
                     width: 100% !important;
                     height: 100% !important;
                     background: white !important;
-                    color: black !important;
-                }
-                @page {
-                    size: A4;
-                    margin: 0;
                 }
                 body > * {
                     display: none !important;
@@ -602,14 +600,12 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
                 div[class*="max-w-5xl"] {
                     display: block !important;
                     width: 100% !important;
-                    height: auto !important;
                     position: static !important;
-                    overflow: visible !important;
                 }
                 #contract-content {
                     width: 100% !important;
                     margin: 0 !important;
-                    padding: 20mm !important;
+                    padding: 14mm !important;
                     box-shadow: none !important;
                 }
             }
