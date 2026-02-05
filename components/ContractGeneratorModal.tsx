@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Printer, Copy, FileText, CheckCircle2, PenTool, Eraser, Undo, Download, ShieldAlert, AlertCircle, Send, Mail, UserCheck, Lock, ArrowDown } from 'lucide-react';
@@ -176,7 +175,7 @@ const SignaturePad = ({ onSave, onCancel }: { onSave: (dataUrl: string) => void,
     };
 
     return (
-        <div className="absolute inset-0 z-50 flex items-center justify-center bg-gray-900/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-gray-900/80 backdrop-blur-sm p-4 animate-in fade-in duration-200 print:hidden">
             <motion.div 
                 initial={{ scale: 0.9, opacity: 0 }} 
                 animate={{ scale: 1, opacity: 1 }}
@@ -332,7 +331,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 print:z-[9999] print:fixed print:inset-0 print:p-0 print:m-0">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
       <motion.div 
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -353,7 +352,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
-        className="relative w-full max-w-5xl bg-white dark:bg-[#1A1D24] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] print:max-h-full print:max-w-full print:w-screen print:h-screen print:rounded-none print:shadow-none print:bg-white print:fixed print:inset-0 print:z-[9999] print:flex print:flex-col"
+        className="relative w-full max-w-5xl bg-white dark:bg-[#1A1D24] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] print:max-w-none print:w-auto print:h-auto print:max-h-none print:rounded-none print:shadow-none print:bg-white print:m-0 print:p-0"
       >
         
         {/* Header */}
@@ -380,8 +379,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         <div 
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            className="flex-1 overflow-y-auto bg-gray-100 dark:bg-black/50 p-8 print:p-0 print:overflow-visible print:bg-white print:flex-1 print:m-0 custom-scrollbar relative scroll-smooth"
-            style={{ background: 'rgb(243, 244, 246)' }}
+            className="flex-1 overflow-y-auto bg-gray-100 dark:bg-black/50 p-8 print:p-0 print:overflow-visible print:bg-white custom-scrollbar relative scroll-smooth"
         >
             
             {/* Scroll Alert for Client */}
@@ -399,8 +397,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
             {/* A4 Paper Simulation */}
             <div 
                 ref={printRef}
-                className="bg-white text-black mx-auto max-w-[210mm] min-h-[297mm] p-[20mm] shadow-2xl print:shadow-none print:m-0 print:w-full print:max-w-none print:min-h-full print:p-[10mm] font-serif text-[11pt] leading-relaxed text-justify relative"
-                style={{ backgroundColor: '#FFFFFF', color: '#000000' }}
+                className="bg-white text-black mx-auto max-w-[210mm] min-h-[297mm] p-[20mm] shadow-2xl print:shadow-none print:m-0 print:w-full print:max-w-none print:min-h-0 print:p-[15mm] font-serif text-[11pt] leading-relaxed text-justify relative"
             >
                 {/* Contract Content */}
                 <h1 className="text-center font-bold text-lg mb-8 uppercase border-b-2 border-black pb-4">Contrato de Prestação de Serviços de Desenvolvimento de Software</h1>
@@ -535,7 +532,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
                 </div>
                 
                 {/* Print Footer Watermark */}
-                <div className="absolute bottom-4 right-8 text-[8px] text-gray-400 font-sans hidden print:block text-right">
+                <div className="mt-8 text-[8px] text-gray-400 font-sans hidden print:block text-right">
                     Documento gerado digitalmente via PH.dev Platform<br/>
                     Autenticidade assegurada pela Lei 14.063/2020
                 </div>
@@ -630,69 +627,76 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         {/* Print Styles Injection */}
         <style>{`
             @media print {
-                body, html {
-                    width: 100% !important;
-                    height: 100% !important;
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    background: white !important;
-                    overflow: visible !important;
+                @page {
+                    margin: 15mm;
+                    size: A4;
                 }
-                body * {
-                    display: none !important;
-                }
-                body div[class*="z-\\[9999\\]"] {
-                    display: flex !important;
-                }
-                body div[class*="z-\\[9999\\]"] * {
-                    display: block !important;
-                    display: flex !important;
-                    display: grid !important;
-                    display: inline !important;
-                    display: inline-block !important;
-                }
+                
                 * {
                     -webkit-print-color-adjust: exact !important;
                     print-color-adjust: exact !important;
                     color-adjust: exact !important;
                 }
-                .print\\:hidden {
+                
+                body * {
+                    visibility: hidden;
+                }
+                
+                .print\\:hidden,
+                [class*="print:hidden"] {
                     display: none !important;
+                    visibility: hidden !important;
                 }
-                .fixed {
-                    position: relative !important;
-                }
-                .absolute {
-                    position: relative !important;
-                }
-                div[class*="overflow-y-auto"] {
-                    overflow: visible !important;
-                    max-height: none !important;
-                }
-                div[class*="max-h-"] {
-                    max-height: none !important;
-                }
-                h1, h2, h3, h4, h5, h6, p, span, div, li, ul, ol, a {
-                    color: black !important;
-                    background: transparent !important;
-                }
-                .bg-gray-100, .bg-gray-50, .bg-white {
-                    background: transparent !important;
-                }
-                .shadow-2xl, .shadow-lg, [class*="shadow"] {
-                    box-shadow: none !important;
-                }
-                .border-black, .border-gray-200, .border-gray-700 {
-                    border-color: #000 !important;
-                    border-width: 1px !important;
-                }
-                img {
-                    max-width: 100%;
-                    height: auto;
-                }
-                @page {
+                
+                /* Mostra apenas o contrato */
+                div[class*="max-w-5xl"] {
+                    visibility: visible;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    max-width: none !important;
+                    background: white !important;
                     margin: 0 !important;
-                    size: A4;
+                    padding: 0 !important;
+                    box-shadow: none !important;
+                    border-radius: 0 !important;
+                }
+                
+                div[class*="max-w-5xl"] * {
+                    visibility: visible;
+                }
+                
+                /* Container do contrato */
+                div[class*="max-w-\\[210mm\\]"] {
+                    max-width: none !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    box-shadow: none !important;
+                    min-height: 0 !important;
+                }
+                
+                /* Remove backgrounds coloridos */
+                .bg-gray-100, 
+                .bg-gray-50,
+                [class*="bg-gray"] {
+                    background: transparent !important;
+                }
+                
+                /* Mantém bordas pretas */
+                .border-black {
+                    border-color: #000 !important;
+                }
+                
+                /* Texto sempre preto */
+                h1, h2, h3, h4, h5, h6, p, span, div, li, strong {
+                    color: #000 !important;
+                }
+                
+                /* Assinaturas visíveis */
+                img[alt*="Assinatura"] {
+                    visibility: visible !important;
+                    display: block !important;
                 }
             }
         `}</style>
