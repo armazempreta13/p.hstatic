@@ -314,11 +314,12 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 print:fixed print:inset-0 print:p-0 print:bg-white">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <motion.div 
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
         onClick={onClose} 
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm print:hidden"
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        style={{ printing: 'none' }}
       />
 
       {showSignaturePad && (
@@ -332,7 +333,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
-        className="relative w-full max-w-5xl bg-white dark:bg-[#1A1D24] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] print:w-screen print:h-screen print:rounded-none print:shadow-none print:max-w-none print:max-h-none print:m-0 print:p-0"
+        className="relative w-full max-w-5xl bg-white dark:bg-[#1A1D24] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
       >
         
         <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-[#151921] print:hidden">
@@ -581,29 +582,37 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
 
         <style>{`
             @media print {
-                * { margin: 0; padding: 0; }
-                html, body { width: 100%; height: 100%; }
-                @page { margin: 0; size: A4; }
-                body > :not(div[class*="max-w-5xl"]) { display: none !important; }
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                html { background: white; }
+                body { background: white; margin: 0; padding: 0; }
+                @page { size: A4; margin: 0; }
+                
+                .fixed, .absolute { position: static !important; }
+                .bg-black { display: none !important; }
+                .backdrop-blur-sm { display: none !important; }
+                
                 div[class*="max-w-5xl"] { 
                     width: 100% !important; 
                     max-width: 100% !important;
-                    height: auto !important;
-                    padding: 0 !important;
                     margin: 0 !important;
+                    padding: 0 !important;
                     box-shadow: none !important;
                     border-radius: 0 !important;
-                    position: static !important;
                     overflow: visible !important;
+                    page-break-after: avoid;
                 }
-                .print\:hidden { display: none !important; }
+                
                 #contract-content { 
                     width: 100% !important;
-                    padding: 20mm !important;
                     margin: 0 !important;
+                    padding: 20mm !important;
                     background: white !important;
                     color: black !important;
+                    page-break-inside: avoid;
                 }
+                
+                #contract-content p { page-break-inside: avoid; }
+                #contract-content h2 { page-break-after: avoid; }
             }
         `}</style>
       </motion.div>
