@@ -357,7 +357,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
         <div 
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            className="flex-1 overflow-y-auto bg-gray-100 dark:bg-black/50 p-8 print:p-0 print:m-0 print:overflow-visible print:bg-white"
+            style={{ flex: 1, overflowY: 'auto', backgroundColor: '#f3f4f6', padding: '2rem' }}
         >
             
             {userRole === 'client' && !hasReadContract && status === 'sent_to_client' && !clientSig && (
@@ -371,7 +371,7 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
                 </div>
             )}
 
-            <div id="contract-content" className="bg-white text-black mx-auto w-[210mm] print:w-screen print:mx-0 print:p-[20mm] p-[20mm] shadow-2xl print:shadow-none font-sans text-[11pt] leading-normal">
+            <div id="contract-content" style={{ backgroundColor: '#fff', color: '#000', width: '210mm', margin: '0 auto', padding: '20mm', fontFamily: 'Arial, sans-serif', fontSize: '11pt', lineHeight: '1.5' }}>
                 <div style={{ textAlign: 'center', marginBottom: '20pt', borderBottom: '2px solid #000', paddingBottom: '10pt' }}>
                     <h1 style={{ fontSize: '14pt', fontWeight: 'bold', margin: '0 0 5pt 0', color: '#000' }}>CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE</h1>
                     <h1 style={{ fontSize: '14pt', fontWeight: 'bold', margin: '5pt 0 0 0', borderBottom: 'none', color: '#000' }}>DESENVOLVIMENTO DE SOFTWARE</h1>
@@ -581,36 +581,28 @@ export const ContractGeneratorModal: React.FC<ContractModalProps> = ({ project, 
 
         <style>{`
             @media print {
-                * {
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    border-collapse: collapse !important;
-                }
-                html, body {
-                    width: 100% !important;
-                    height: 100% !important;
-                    background: white !important;
-                    color: black !important;
-                }
-                @page {
-                    size: A4;
-                    margin: 0;
-                }
-                body > * {
-                    display: none !important;
-                }
-                div[class*="max-w-5xl"] {
-                    display: block !important;
-                    width: 100% !important;
+                * { margin: 0; padding: 0; }
+                html, body { width: 100%; height: 100%; }
+                @page { margin: 0; size: A4; }
+                body > :not(div[class*="max-w-5xl"]) { display: none !important; }
+                div[class*="max-w-5xl"] { 
+                    width: 100% !important; 
+                    max-width: 100% !important;
                     height: auto !important;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    box-shadow: none !important;
+                    border-radius: 0 !important;
                     position: static !important;
                     overflow: visible !important;
                 }
-                #contract-content {
+                .print\:hidden { display: none !important; }
+                #contract-content { 
                     width: 100% !important;
-                    margin: 0 !important;
                     padding: 20mm !important;
-                    box-shadow: none !important;
+                    margin: 0 !important;
+                    background: white !important;
+                    color: black !important;
                 }
             }
         `}</style>
