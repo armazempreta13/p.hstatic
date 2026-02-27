@@ -136,7 +136,7 @@ export const Footer: React.FC<Pick<NavigationProps, 'onNavigate'>> = ({ onNaviga
           <div className="flex items-center gap-2 text-xs text-gray-700 bg-gray-900/50 px-3 py-1.5 rounded-full border border-gray-800">
               <span>Desenvolvido com</span>
               <Heart size={10} className="text-red-500 fill-red-500 animate-pulse" />
-              <span>e muito café.</span>
+              <span>e muito café. TESTE</span>
           </div>
         </div>
       </div>
